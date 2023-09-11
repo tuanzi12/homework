@@ -1,24 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include <string.h>
-int reverse(char *arr)
-{
-	char* left = arr;
-	char* right = arr+strlen(arr) - 1;
-	char mid;
-	while (left<right)
-	{
-		mid = *left;
-		*left = *right;
-		*right = mid;
-		left++;
-		right--;
-	}
-}
-int main()
-{
-	char arr[] = "Hello world";
-	reverse(arr);
-	printf("%s", arr);
-	return 0;
+
+int main() {
+    long n = 0, k = 0;
+    scanf("%ld %ld", &n, &k);
+    if (k == 0)
+    {
+        printf("%ld", n * n);
+        
+    }
+    long count = 0;
+    for (long y = k + 1; y <= n; y++)
+    {
+        long ret = n % y < k ? 0 : n % y - (k - 1);
+        count += (y - k) * (n / y) + (ret);
+    }
+    printf("%ld\n", count);
+    return 0;
 }
